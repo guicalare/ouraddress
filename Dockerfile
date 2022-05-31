@@ -7,4 +7,6 @@ RUN apk add git
 
 RUN git clone https://github.com/guicalare/ouraddress.git
 
+RUN pip3 install -r requirements.txt
+
 ENV APP_PORT = "8000"
