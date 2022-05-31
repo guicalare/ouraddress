@@ -32,6 +32,9 @@ async def main(request: Request):
 
 if __name__ == "__main__":
 
+   with open("config.json", "r", encoding='latin-1') as f:
+      config_parameters = load(f)
+
    if not file_exists(config_parameters["input folder"]):
       makedirs(config_parameters["input folder"])
    if not file_exists(config_parameters["output folder"]):
