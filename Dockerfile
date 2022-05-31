@@ -10,3 +10,6 @@ RUN git clone https://github.com/guicalare/ouraddress.git
 RUN pip3 install -r ./ouraddress/requirements.txt
 
 ENV APP_PORT 8000
+
+WORKDIR "ouraddress"
+CMD [ "python3", "ui-server.py" ]
