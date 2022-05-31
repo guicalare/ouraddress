@@ -16,15 +16,13 @@ app = FastAPI()
 
 @app.post("/files/")
 async def create_files(files: list[bytes] = File(), basura: str = "", calles: str = Form(), codigo_municipal: str = Form(), separador: str = Form()):
-
-   return basura, calles, codigo_municipal, separador
    
    if file_exists("./input ddbb/datos.csv"):
       remove_file("./input ddbb/datos.csv")
    if file_exists("./output ddbb/ouradress.csv"):
       remove_file("./output ddbb/ouradress.csv")
 
-   index_calles = files[0].decode('latin-1').split("\n").split(separador).index(calles)
+   '''index_calles = files[0].decode('latin-1').split("\n").split(separador).index(calles)
    index_municipios = files[0].decode('latin-1').split("\n").split(separador).index(codigo_municipal)
 
    with open("./input ddbb/datos.csv", "w", encoding='latin-1') as f:
@@ -40,7 +38,7 @@ async def create_files(files: list[bytes] = File(), basura: str = "", calles: st
          temp_line[1] = temp_line[index_calles]
          temp_line[index_calles] = aux_value
 
-         f.write("#".join(temp_line)+"\n")
+         f.write("#".join(temp_line)+"\n")'''
 
    Ouraddress().file_search_fuzzy_multiprocessing_init()
 
