@@ -1,3 +1,5 @@
 fastapi
 uvicorn
 thefuzz
+jinja2
+python-multipart
