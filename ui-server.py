@@ -8,7 +8,7 @@ from os.path import exists as file_exists
 from os import remove as remove_file
 import uvicorn
 from json import load
-from ouradress import *
+from ouraddress import *
 
 templates = Jinja2Templates(directory="templates")
 
