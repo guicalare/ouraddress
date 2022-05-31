@@ -31,4 +31,12 @@ async def main(request: Request):
    return templates.TemplateResponse("upload.html",{"request":request})
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=int(getenv('APP_PORT')))
+
+   if not file_exists(self.config_parameters["input folder"]):
+      makedirs(self.config_parameters["input folder"])
+   if not file_exists(self.config_parameters["output folder"]):
+      makedirs(self.config_parameters["output folder"])
+   if not file_exists(self.config_parameters["temp folder"]):
+      makedirs(self.config_parameters["temp folder"])
+
+   uvicorn.run(app, host="0.0.0.0", port=int(getenv('APP_PORT')))
