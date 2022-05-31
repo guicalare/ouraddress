@@ -17,7 +17,7 @@ app = FastAPI()
 @app.post("/files/")
 async def create_files(files: list[bytes] = File(), basura: str = "", calles: str = Form(), codigo_municipal: str = Form(), separador: str = Form()):
 
-   print(basura, calles, codigo_municipal, separador)
+   return basura, calles, codigo_municipal, separador
    
    if file_exists("./input ddbb/datos.csv"):
       remove_file("./input ddbb/datos.csv")
