@@ -32,11 +32,11 @@ async def main(request: Request):
 
 if __name__ == "__main__":
 
-   if not file_exists(self.config_parameters["input folder"]):
-      makedirs(self.config_parameters["input folder"])
-   if not file_exists(self.config_parameters["output folder"]):
-      makedirs(self.config_parameters["output folder"])
-   if not file_exists(self.config_parameters["temp folder"]):
-      makedirs(self.config_parameters["temp folder"])
+   if not file_exists(config_parameters["input folder"]):
+      makedirs(config_parameters["input folder"])
+   if not file_exists(config_parameters["output folder"]):
+      makedirs(config_parameters["output folder"])
+   if not file_exists(config_parameters["temp folder"]):
+      makedirs(config_parameters["temp folder"])
 
    uvicorn.run(app, host="0.0.0.0", port=int(getenv('APP_PORT')))
