@@ -17,6 +17,11 @@ app = FastAPI()
 @app.post("/files/")
 async def create_files(files: list[bytes] = File(), basura: str = "", calles: str = Form(), codigo_municipal: str = Form(), separador: str = Form()):
 
+   if file_exists("./input ddbb/datos.csv"):
+      remove_file("./input ddbb/datos.csv")
+   if file_exists("./output ddbb/ouradress.csv"):
+      remove_file("./output ddbb/ouradress.csv")
+   
    with open("./input ddbb/datos.csv", "w", encoding='latin-1') as f:
       f.write(files[0].decode('latin-1'))
 
