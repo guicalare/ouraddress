@@ -1,0 +1,9 @@
+{
+	"input folder" : "./input ddbb/",
+	"output folder" : "./output ddbb/",
+	"search folder" : "./search ddbb/fixed/",
+    "temp folder" : "./temp/",
+    "early stop" : 95,
+    "min match valid" : 50,
+    "instances" : 12
+} 

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ouraddress</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
+        <!-- UIkit JS -->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit-icons.min.js"></script>
+    </head>
+    <body style="background-color: #222 !important;">
+        <div class="uk-container" style="background-color: #fff !important; height: 100% !important;">
+            <div>
+                <nav class="uk-navbar uk-navbar-container uk-margin uk-navbar-transparent" uk-navbar style="position: relative; z-index: 1000;" style="background-color: white !important">
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-toggle" type="button" uk-toggle="target: #offcanvas-nav-primary">
+                            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+                        </a>
+                    </div>
+                </nav>
+                <div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
+                    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+                        <button class="uk-offcanvas-close" type="button" uk-close></button>
+                        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <article class="uk-article">
+                <h1 class="uk-article-title"><a class="uk-link-reset" href="">Cruce de calles</a></h1>
+                <p class="uk-article-meta">V WEB[] BACK[]</p>
+                <p></p>
+            </article>
+            <div class="uk-child-width-expand@s" uk-grid style="background-color: #fff !important">
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body uk-box-shadow-hover-large">
+                        <h1 class="uk-text-center">Subir archivo</h1>
+                        <hr class="uk-divider-icon">
+                        <form class="uk-form-horizontal uk-margin-large" style="margin-top: 0px !important;" action="/files/" enctype="multipart/form-data" method="post">
+                           <div class="uk-margin">
+                                <label class="uk-form-label" for="calles">Calles</label>
+                                <div class="uk-form-controls">
+                                    <input name="calles" class="uk-input uk-form-width-large" id="calles" type="text" placeholder="Nombre variable...">
+                                </div>
+                           </div>
+                           <div class="uk-margin">
+                                <label class="uk-form-label" for="municipios">Codigo municipal</label>
+                                <div class="uk-form-controls">
+                                    <input name="codigo_municipal" class="uk-input uk-form-width-large" id="municipios" type="text" placeholder="Nombre variable...">
+                                </div>
+                           </div>
+                           <div class="uk-margin">
+                                <label class="uk-form-label" for="separador">Separador</label>
+                                <div class="uk-form-controls">
+                                    <input name="separador" class="uk-input uk-form-width-large" id="separador" type="text" placeholder="Caracter separador sin comillas...">
+                                </div>
+                           </div>
+                           <div uk-form-custom="target: true">
+                              <label class="uk-form-label" for="form-horizontal-text">Archivo</label>
+                              <div class="uk-form-controls">
+                                 <input name="files" type="file">
+                                 <input name="basura" class="uk-input uk-form-width-medium" type="text" placeholder="Selecciona un archivo..." disabled>
+                              </div>
+                           </div>
+                           <div class="uk-margin">
+                              <input class="uk-button uk-button-secondary uk-width-1-1" type="submit">
+                           </div>
+                        </form>
+                    </div>   
+                </div>
+                <div>
+                    <h1>Instrucciones</h1>
+                    <ul uk-accordion>
+                        <li>
+                            <a class="uk-accordion-title" href="#">Paso 1</a>
+                            <div class="uk-accordion-content">
+                                <p>Ten tu consulta en un fichero de texto plano (ej csv, txt, etc...) con la informacion delimitada y con una cabecera de variables al principio del archivo.
+                                Recuerda que en el fichero que subas debe aparecer una columna que contenga las calles, otra con el codigo municipal donde aparecen los 5 digitos completos (no vale el codigo postal) y el resto de 
+                                informacion que pienses que es importante (intenta minimizar esta ultima parte para facilitar la subida, trabajo y descarga de la infroamcion).
+                                </p><p>
+                                Si tienes dudas del formato, por favor, considera abrir el ejemplo pulsando en el boton de "Ejemplo".
+                                 </p>
+                                 <a class="uk-button uk-button-default" href="#ejemplo" uk-toggle>Ejemplo</a>
+                                 <div id="ejemplo" uk-modal>
+                                    <div class="uk-modal-dialog">
+                                       <button class="uk-modal-close-default" type="button" uk-close></button>
+                                       <div class="uk-modal-header">
+                                             <h2 class="uk-modal-title">Ejemplo</h2>
+                                       </div>
+                                       <div class="uk-modal-body">
+                                             <p>codigo_ine#calle</p>
+                                             <p>20907#poligono industrial irunzubi</p>
+                                             <p>03026#c/ san vicente</p>
+                                             <p>03026#AVD PAZ</p>
+                                             <p>14035#antonio machado</p>
+                                             <p>14035#Avenida del Parque</p>
+                                             <p>14035#Avenida Marqués de Santillana</p>
+                                             <p>14035#C/ Miguel Hernández</p>
+                                             <p>14035#Calle Abogado Aranda</p>
+                                             <p>14035#Calle Alonso Martín Grande</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" href="#">Paso 2</a>
+                            <div class="uk-accordion-content">
+                                <p>En la parte del formulario rellena todos los campos que se piden. Recuerda que tienes que meter solo lo que se pide y siempre tiene que coincidir lo que
+                                 pones en el formulario con los nombres de las variables de la cabecera que aparecen en el archivo que subas.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="uk-accordion-title" href="#">Paso 3</a>
+                            <div class="uk-accordion-content">
+                                <p>Pulsa el boton de "SUBMIT QUERY" y espera a que se procese la informacion. NO CIERRES LA PESTAÑA, ya que cuando esta termine, se descargara de forma automatica
+                                los resultados finales</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="uk-section uk-section-muted" style="background-color: #fff">
+                <div class="uk-container">
+                    <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                    </ul>
+                </div>
+            </div>          
+        </div>
+        <div class="uk-container" style="background-color: #fff !important; height: 20% !important;">
+        </div>
+    </body>
+</html>
