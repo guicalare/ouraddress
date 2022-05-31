@@ -21,9 +21,24 @@ async def create_files(files: list[bytes] = File(), basura: str = "", calles: st
       remove_file("./input ddbb/datos.csv")
    if file_exists("./output ddbb/ouradress.csv"):
       remove_file("./output ddbb/ouradress.csv")
-   
+
+   index_calles = files[0].decode('latin-1').split("\n").split(separador).index(calles)
+   index_municipios = files[0].decode('latin-1').split("\n").split(separador).index(codigo_municipal)
+
    with open("./input ddbb/datos.csv", "w", encoding='latin-1') as f:
-      f.write(files[0].decode('latin-1'))
+      for line in files[0].decode('latin-1').split("\n"):
+
+         temp_line = line.strip().split(separador)
+
+         aux_value = temp_line[0]
+         temp_line[0] = temp_line[index_municipios]
+         temp_line[index_municipios] = aux_value
+
+         aux_value = temp_line[1]
+         temp_line[1] = temp_line[index_calles]
+         temp_line[index_calles] = aux_value
+
+         f.write("#".join(temp_line)+"\n")
 
    Ouraddress().file_search_fuzzy_multiprocessing_init()
 
