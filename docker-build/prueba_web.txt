@@ -1,0 +1,190 @@
+id#calle
+20907#poligono industrial irunzubi
+03026#c/ san vicente
+03026#AVD PAZ
+14035#antonio machado
+14035#Avenida del Parque
+14035#Avenida Marqués de Santillana
+14035#C/ Miguel Hernández
+14035#Calle Abogado Aranda
+14035#Calle Alonso Martín Grande
+14035#Calle Álvaro de Bazán
+14035#Calle Anita María
+14035#Calle Antonio Maura
+14035#Calle B Esteban Murillo
+14035#Calle Balmes
+14035#Calle Bernardo Perea
+14035#Calle Calderón de la Barca
+14035#Calle Calvario
+14035#Calle Canalejas
+14035#Calle Caños Verdes
+14035#Calle Cánovas del Castillo
+14049#A-2211
+14049#A-431
+14049#A-453
+14049#Av de Andalucía
+14049#Av de Blas Infante
+14049#Av de Bocanegra
+14049#Av de Córdoba
+14049#Av de El Greco
+14049#Av de Falla
+14049#Av de Fátima
+14049#Av de Félix Rodríguez de la Fuente
+14049#Av de Goya
+14049#Av de Jacinto Guerrero
+14049#Av de la Campana
+14049#Av de la Diputación
+14049#Av de la Paz
+14049#Av de la República Argentina
+14049#Av de Lapaz
+14049#Av de Madrid
+14049#Av de Panamá
+14049#Av de Paraguay
+14049#Av de Pío XII
+14049#Av de Puerto Rico
+14049#Av de Santa Ana
+14049#Av de Vázquez Díaz
+14049#Av del Fray Albino
+14049#Av Manuel de Falla
+14049#Av Pío XII
+14073#Calle del Norte
+14073#Calle del Olivo
+14073#Calle del Pino
+14073#Calle del Puerto Barrio Alto
+14073#Calle del Vaquero Hernando
+14073#Calle Doctor Fleming
+14073#Calle Doctor Marañon
+14073#Calle Doctor Severo Ochoa
+14073#Calle Dr Escobar y Morreale
+14073#Calle Esparteros
+14073#Calle Fray Jaime Carretero
+14073#Calle Garcia Lorca
+14073#Calle Granada
+14073#Calle Hermanos Álvarez Quintero
+14073#Calle Jacinto Benavente
+14073#Calle Jaen
+14073#Calle Juan Carlos I
+14073#Calle Juan Ruiz Escobar
+14073#Calle Juanito Maravillas
+14073#Calle Julio Romero de Torres
+14073#Calle la Cola
+14073#Calle la Erilla
+14073#Calle la Virgen
+14073#Calle Lope de Vega
+14073#Calle Maestro Rafael Aparicio
+14073#Calle Manuel Arribas
+14073#Calle Manuel Calero Calerilo
+14073#Calle Manuel Calero Calerito
+14073#Calle Miguel Garcia
+14073#Calle Norte
+14073#Calle Nueva
+14073#Calle Perez Galdos
+14073#Calle Rafael Vargas Nevado
+14073#Calle Ramón y Cajal
+14073#Calle Rivera
+14073#Calle San Jose
+14073#Calle Santiago
+14073#Calle Sevilla
+14073#Calle Toledo
+14073#Calle Tomas Carretero
+14073#Camino a Espiel
+14073#Camino de Espiel
+14073#Camino de la Campana
+14073#Camino de los Cazadores
+14073#Camino de los Majanos
+14073#Camino de Tapón
+15070#AC-861
+15070#Av de Galicia
+15070#Av de La Coruña
+15070#Av de La Habana
+15070#Av de las Veigas
+15070#Av del Ferrol
+15070#Av Galicia
+15070#Avenida Campeiras
+15070#Avenida Castelao
+15070#Avenida Coruña
+15070#Avenida de As Campeiras
+15070#Avenida de Castelao
+15070#Avenida de Galicia
+15070#Avenida de la Coruña
+15070#Avenida de la Habana
+15070#Avenida de Lugo
+15070#Avenida de Ortigueira
+15070#Avenida Galicia
+15070#Avenida Habana
+15070#Avenida Ortigueira
+15070#Avenida Veigas
+15070#Calle A Forxa
+15070#Calle de Alexandre Bóveda
+15070#Calle de Álvaro Cunqueiro
+15070#Calle de Antonio Machado
+15070#Calle de Areosa
+15070#Calle de Blanco Amor
+15070#Calle de Calderón de la Barca
+15070#Calle de Carabel
+15070#Calle de Celso Emilio Ferreiro
+15070#Calle de Cervantes
+15070#Calle de Chamoselo
+15070#Calle de Coireiro
+15070#Calle de Concello
+15070#Calle de Concepción Arenal
+15070#Calle de Cuz das Airas
+15070#Calle de Eduardo Pondal
+15070#Calle de Eume
+15070#Calle de Forcadas
+15070#Calle de Fray Antonio José Piñeiro
+15070#Calle de García Lorca
+15070#Calle de José María Penabad López
+15070#Calle de Juan Antonio Suances
+15070#Calle de la Salud
+15070#Calle de la Virxe da Luz
+15070#Calle de los Ares
+15070#Calle de los Hermanos Tojeiro
+15070#Calle de los Mugardos
+15070#Calle de María Pita
+15070#Calle de Méndez Núñez
+15070#Calle de Menéndez Pelayo
+15070#Calle de Narón
+15070#Calle de Ourense
+15070#Calle de Pablo Picasso
+15070#Calle de Pardo Bazán
+15070#Calle de Pontedeume
+15070#Calle de Ramón Cabanillas
+15070#Calle de Rita Rivera Chao
+15070#Calle de Rosalía de Castro
+15070#Calle de San Xoán
+15070#Calle de Santiago Apóstol
+15070#Calle de Sergio Rivera Chao
+15070#Carretera de Cabañas a As Pontes de García Rodríguez
+15070#Carretera de Pontedeume as Pontes
+15070#Castro
+15070#Lugar del Poblado da Fraga
+15070#Lugar Poblado a Magdalena
+15070#Lugar Poblado do Barreiro
+15070#O Cornocelo
+15070#Plaza de Carlos Fornos
+15070#Poblado a Magdalena
+15070#Rúa A
+15070#Rúa Acibido
+15070#Rúa Alcalde José Vilaboy Pajón
+15070#Rúa Alexandre Bóveda
+15070#Rúa Álvaro Cunqueiro
+15070#Rúa Alvedosa
+15070#Rúa Amapola
+15070#Rúa Amapolas
+15070#Rúa Anduriñas
+15070#Rúa Antonio Machado
+15070#Rúa Areosa
+15070#Rúa Ares
+15070#Rúa Blanco Amor
+15070#Rúa Cabañas
+15070#Rúa Calderón de la Barca
+16001#Calle Agustin Fernandez Muñoz
+16001#Calle Carrero Blanco
+16001#Calle Fuente del Saz
+16001#Calle Iglesia
+16001#Calle Jardines
+16001#Calle José Antonio
+16001#Calle la Poveda
+16001#Calle Poveda
+16001#Plaza Caudillo
