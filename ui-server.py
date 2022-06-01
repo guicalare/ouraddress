@@ -9,6 +9,7 @@ from os import remove as remove_file
 import uvicorn
 from json import load
 from ouraddress import *
+from utils import *
 
 templates = Jinja2Templates(directory="templates")
 
@@ -16,40 +17,27 @@ app = FastAPI()
 
 @app.post("/files/")
 async def create_files(files: list[bytes] = File(), basura: str = "", calles: str = Form(), codigo_municipal: str = Form(), separador: str = Form()):
-   
-   if file_exists("./input ddbb/datos.csv"):
-      remove_file("./input ddbb/datos.csv")
-   if file_exists("./output ddbb/ouradress.csv"):
-      remove_file("./output ddbb/ouradress.csv")
 
-   '''index_calles = files[0].decode('latin-1').split("\n").split(separador).index(calles)
-   index_municipios = files[0].decode('latin-1').split("\n").split(separador).index(codigo_municipal)
+   clean_dir("./input ddbb")
+   clean_dir("./output ddbb")
+   clean_dir("./temp ddbb")
 
    with open("./input ddbb/datos.csv", "w", encoding='latin-1') as f:
-      for line in files[0].decode('latin-1').split("\n"):
+      f.write(files[0].decode('latin-1'))
 
-         temp_line = line.strip().split(separador)
-
-         aux_value = temp_line[0]
-         temp_line[0] = temp_line[index_municipios]
-         temp_line[index_municipios] = aux_value
-
-         aux_value = temp_line[1]
-         temp_line[1] = temp_line[index_calles]
-         temp_line[index_calles] = aux_value
-
-         f.write("#".join(temp_line)+"\n")'''
-
-   Ouraddress().file_search_fuzzy_multiprocessing_init()
+   ouraddress = Ouraddress()
+   ouraddress.prepare_input_data(calles, codigo_municipal, separador)
+   ouraddress.file_search_fuzzy_multiprocessing_init()
 
    return FileResponse("./output ddbb/ouradress.csv")
 
 @app.get("/")
 async def main(request: Request):
-   if file_exists("./input ddbb/datos.csv"):
-      remove_file("./input ddbb/datos.csv")
-   if file_exists("./output ddbb/ouradress.csv"):
-      remove_file("./output ddbb/ouradress.csv")
+
+   clean_dir("./input ddbb")
+   clean_dir("./output ddbb")
+   clean_dir("./temp ddbb")
+   
    return templates.TemplateResponse("upload.html",{"request":request})
 
 if __name__ == "__main__":

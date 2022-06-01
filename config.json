@@ -5,5 +5,5 @@
     "temp folder" : "./temp/",
     "early stop" : 95,
     "min match valid" : 50,
-    "instances" : 12
+    "instances" : 2
 } 

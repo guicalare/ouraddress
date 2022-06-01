@@ -8,34 +8,82 @@ from os import remove as remove_file
 from thefuzz import fuzz
 from thefuzz import process
 from datetime import datetime
-
+from utils import *
 
 class Ouraddress:
 
     def __init__(self):
 
-        with open("config.json", "r", encoding='latin-1') as f:
-            self.config_parameters = load(f)
+        self.config_parameters = read_json_file("config.json", encoding='latin-1')
 
-        if not file_exists(self.config_parameters["input folder"]):
-            makedirs(self.config_parameters["input folder"])
-        if not file_exists(self.config_parameters["output folder"]):
-            makedirs(self.config_parameters["output folder"])
-        if not file_exists(self.config_parameters["temp folder"]):
-            makedirs(self.config_parameters["temp folder"])
+        create_path_if_not_exists(self.config_parameters["input folder"])
+        create_path_if_not_exists(self.config_parameters["output folder"])
+        create_path_if_not_exists(self.config_parameters["temp folder"])
 
         self.instances = self.config_parameters["instances"]
 
-        print(datetime.now().strftime("%D %H:%M:%S"), f" Loaded configuration: {self.config_parameters}")
-        
-    def split_input_file(self):
+        print_log(f"Loaded configuration: {self.config_parameters}")
+
+    def prepare_input_data(self, street, ine_code, delimeter, encoding='latin-1'):
 
         input_file = join_path(self.config_parameters["input folder"], listdir(self.config_parameters["input folder"])[0])
 
-        with open(input_file, "r", encoding='latin-1') as f:
-            input_file_data = f.readlines()
+        print_log(f"Iniciando comprobacion de integridad del archivo {input_file}")
+
+        headers = get_headers(input_file, delimeter, encoding=encoding)
+
+        print_log(f"Cabecera detectada {headers}")
+
+        if not check_csv_integrity(input_file, delimeter, encoding='latin-1'):
+
+            print_log(f"Problemas de integridad detectados")
+
+            fix_csv_integrity(input_file, delimeter, encoding='latin-1')
+
+            print_log(f"Problemas de integridad solucionados")
+        
+        index_ine_code = headers.index(ine_code)
+        index_street = headers.index(street)
+
+        print_log(f"Cambiando el orden de las columnas")
+
+        if index_ine_code != 0:
+            
+            print_log(f"Cambiando columnas de codigo municipal")
+
+            change_csv_columns(input_file, 0, index_ine_code, delimeter, encoding='latin-1')
+
+            headers = get_headers(input_file, delimeter, encoding=encoding)
+
+            index_street = headers.index(street)
+        
+        if index_street != 1:
+
+            print_log(f"Cambiando columnas de calles")
+
+            change_csv_columns(input_file, 1, index_street, delimeter, encoding='latin-1')
+        
+        headers = get_headers(input_file, delimeter, encoding=encoding)
+
+        print_log(f"Cabeceras finales {headers}")
+
+        print_log(f"Normalizando delimitadores")
+
+        replace_text_file(input_file, delimeter, "#", encoding='latin-1')
+
+        print_log(f"Input normalizado")
+        
+    def split_input_file(self):
+
+        print_log(f"Dividiendo input en " + self.config_parameters["temp folder"])
+
+        input_file = join_path(self.config_parameters["input folder"], listdir(self.config_parameters["input folder"])[0])
+
+        input_file_data = read_file(input_file, encoding='latin-1')
 
         headers = input_file_data[0]
+
+        clean_dir(self.config_parameters["temp folder"])
         
         for line in input_file_data[1:]:
 
@@ -43,11 +91,15 @@ class Ouraddress:
 
             if not file_exists(temp_path):
 
-                with open(temp_path, 'w', encoding='latin-1') as f:
-                    f.write(headers)                
+                write_file(temp_path, headers, encoding='latin-1', jump_line=False)              
+            
+            write_file(temp_path, line, encoding='latin-1', jump_line=False)
 
-            with open(temp_path, 'a', encoding='latin-1') as f:
-                f.write(line)
+        print_log(f"Division de input finalizada")
+
+        print_log(f"Limpiando directorio " + self.config_parameters["input folder"])
+
+        clean_dir(self.config_parameters["input folder"])
 
     def file_search_fuzzy(self, id):
 
@@ -55,19 +107,20 @@ class Ouraddress:
         input_data_path = join_path(self.config_parameters["temp folder"], id)
         output_data_path = join_path(self.config_parameters["output folder"], id)
 
-        with open(search_data_path, "r", encoding='latin-1') as f:
-            search_data = f.readlines()
+        search_data = read_file(search_data_path, encoding='latin-1')
+        input_data = read_file(input_data_path, encoding='latin-1')
 
-        with open(input_data_path, "r", encoding='latin-1') as f:
-            input_data = f.readlines()
-        
+        data_headers = get_headers(input_data_path, "#", encoding='latin-1')
+        search_headers = get_headers(search_data_path, "#", encoding='latin-1')
+
         remove_file(input_data_path)
 
-        data_headers = input_data[0].strip()
-        search_headers = search_data[0].strip()
+        data_headers = "#".join(data_headers)
+        search_headers = "#".join(search_headers)
 
-        with open(output_data_path, "w", encoding='latin-1') as f:
-            f.write(f"{data_headers}#{search_headers}#score \n")        
+        write_file(output_data_path, f"{data_headers}#{search_headers}#score", encoding='latin-1', jump_line=True)
+
+        # HASTA AQUI TODO BIEN
 
         for data in input_data[1:]:
 
@@ -97,17 +150,19 @@ class Ouraddress:
 
     def file_search_fuzzy_multiprocessing(self, temp_files, index):
 
-        print(datetime.now().strftime("%D %H:%M:%S"), f" Thread {index} entry [file_search_fuzzy_multiprocessing] {temp_files}")
+        print_log(f"Thread {index} entry [file_search_fuzzy_multiprocessing] {temp_files}")
         
         for file in temp_files:
 
-            print(datetime.now().strftime("%D %H:%M:%S"), f" Thread {index} file {file} started")
+            print_log(f" Thread {index} file {file} started")
+
             start = datetime.now()
 
             self.file_search_fuzzy(file)
 
             end = datetime.now()
-            print(datetime.now().strftime("%D %H:%M:%S"), f" Thread {index} file {file} ended [", end-start, "]")
+            
+            print_log(f" Thread {index} file {file} ended [" + str(end-start) + "]")
 
     def file_search_fuzzy_multiprocessing_init(self):
 
@@ -117,7 +172,7 @@ class Ouraddress:
 
         temp_files_splits = array_split(temp_files, self.instances)
 
-        print(datetime.now().strftime("%D %H:%M:%S"), f" Files splited distribution: [{temp_files_splits}]")
+        print_log(f"Files splited distribution: [{temp_files_splits}]")
 
         threads = []
 
@@ -127,7 +182,7 @@ class Ouraddress:
 
             if len(temp_files_thread) != 0:
 
-                print(datetime.now().strftime("%D %H:%M:%S"), f" Thread {index} call with parameters: {temp_files_thread}")
+                print_log(f"Thread {index} call with parameters: {temp_files_thread}")
 
                 x = Process(target=self.file_search_fuzzy_multiprocessing, args=(temp_files_thread, index, ))
 
