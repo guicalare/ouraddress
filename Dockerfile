@@ -14,5 +14,5 @@ RUN pip3 install -r ./ouraddress/requirements.txt
 ENV APP_PORT 8000
 
 #WORKDIR "docker-build"
-#WORKDIR "ouraddress"
+WORKDIR "ouraddress"
 CMD [ "python3", "ui-server.py" ]
